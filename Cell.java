@@ -1,12 +1,12 @@
 public class Cell<U>{
     /**
-     * object inside the cell
+     * <U> inside the cell
      */
-    protected <U> content;
+    protected U content;
     /**
      * pointeur on the next Cell
      */
-    protected Cell next;
+    protected Cell<U> next;
 
     /**
      * builder that makes an empty cell without the next cell
@@ -17,10 +17,10 @@ public class Cell<U>{
     }
 
     /**
-     * builder that makes a cell with an object inside of it, but there's not a following cell
-     * @param _content object to put inside the cell
+     * builder that makes a cell with an <U> inside of it, but there's not a following cell
+     * @param _content <U> to put inside the cell
      */
-    public Cell(Object o_content) {
+    public Cell(U o_content) {
         content = o_content;
         next = null;
     }
@@ -29,7 +29,7 @@ public class Cell<U>{
      * builder that males a new cell which will be the same as the parameter cell
      * @param cell is the cell that we want to copy
      */
-    public Cell(Cell cell){
+    public Cell(Cell<U> cell){
         content = cell.getcontent();
         next = cell.getnext();
     }
@@ -38,7 +38,7 @@ public class Cell<U>{
      * access to the next Cell
      * @return next
      */
-    public Cell getnext() {
+    public Cell<U> getnext() {
         return next;
     }
 
@@ -46,23 +46,23 @@ public class Cell<U>{
      * Set the next cell
      * @param c_next new next cell
      */
-    public void setnext(Cell c_next) {
+    public void setnext(Cell<U> c_next) {
         next = c_next;
     }
     
     /**
      * set the next cell
-     * @param  un object to put inside the next cell
+     * @param  un <U> to put inside the next cell
      */
-    public void setnext(Object o_next) {
-        next = new Cell(o_next);
+    public void setnext(U o_next) {
+        next = new Cell<U>(o_next);
     }
     
     /**
      * access of the content of the current cell
      * @return content
      */
-    public Object getcontent() {
+    public U getcontent() {
         return content;
     }
 
@@ -70,7 +70,7 @@ public class Cell<U>{
      * set content
      * @param  le new content
      */
-    public void setcontent(Object o_content) {
+    public void setcontent(U o_content) {
         content = o_content;
     }
 
@@ -90,7 +90,7 @@ public class Cell<U>{
      * @param c is the cell we want to compare
      * @return  if the cells are exactly the same (same content and next cell)
      */
-    public boolean equals(Cell c){
+    public boolean equals(Cell<U> c){
         return content == c.getcontent() && next == c.getnext();
     }
     
